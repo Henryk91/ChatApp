@@ -1,0 +1,24 @@
+
+<div id="doc-body">
+    <div id="header">
+            <button id="backButton" (click)="showNav()">Back</button>
+            <strong><p id="receiver">{{contactName()}}</p></strong>
+    </div>
+    <div id="messArea" >
+        <div >
+        <div *ngFor='let msg of docArr.doc'>
+                <div *ngIf=notEmpty(msg.content)>
+                <div id="usrMsg" *ngIf=isUser(msg.sender)><p >{{msg.content}} </p><p class="timeStamp">{{msg.time}}</p></div>
+                <div id="ntUsr" *ngIf="!isUser(msg.sender)"><p >{{msg.content}} </p><p class="timeStamp">{{msg.time}}</p></div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    <div id="bottom">
+        <div id="typeArea">
+            <input type="text" (keydown.enter)="sendMsg(text.value); text.value=''" id="msgType" #text placeholder='Start typing...'>
+        </div>
+        <button id="sendButton" (click)="sendMsg(text.value); text.value=''">Send</button>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+.header{
+    position: fixed;
+    left:0;
+    top:0;
+    background-color: navy;
+    width: 100%;
+    height:45px;
+    padding-top: 10px; 
+    z-index: 9999999;
+    display: block;
+    
+    #loggedOut{
+        height:100%;
+        top : 55px;
+        background-color: navy;
+    }
+}
+div{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color:  #d7dff5;
+    overflow-x: hidden;
+    text-align: center;
+    margin:0;
+    z-index: 1500;
+    
+    span{
+        text-decoration: none;
+        z-index: 999999;
+        font-size: 30px;
+        color: navy;
+        background-color: #f6f6f6;
+        width:80%;
+        margin-left:10%;
+        margin-top:5px;
+        display: block;
+        border-radius: 2px;
+    }.selected {
+        color: #e1e1e1;
+    }:hover {
+        cursor: pointer;
+    }
+    .loginInput{
+        color:black;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    #contactNameInput{
+        font-family: 'Times New Roman', Times, serif;
+        color:black;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+h3{
+    margin-bottom: 0px;
+    padding-top: 4px;
+    font-size: 30px;
+    margin-top:10px;
+}
+button{
+    font-family: 'Times New Roman', Times, serif;
+    width:80px;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+}
+#addContButton{
+    background-color: navy;
+    color: white;
+}
+#loginButton{
+    background-color: white;  
+}
+#addContact{
+    position: relative;
+    z-index: 999999;
+    font-size: 20px;
+    color: navy;
+    background-color: #f6f6f6;
+    width:90%;
+    height: auto;
+    margin-top: 65px;
+    margin-left:5%;
+    margin-bottom:3%;
+    padding-bottom: 10px;
+    border-radius: 2px;
+}
+

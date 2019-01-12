@@ -1,0 +1,11 @@
+export class Document {
+    id: string;
+    users: string[];
+    doc: Doc[];
+}
+export interface Doc {
+    sender: string;
+    content: string;
+    time: string;
+    date: string;
+}

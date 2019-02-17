@@ -7,7 +7,7 @@ import { Globals } from './globals';
 import { AppComponent } from './app.component';
 import { DocumentComponent } from './components/document/document.component';
 import { DocumentListComponent } from './components/document-list/document-list.component';
-const config: SocketIoConfig = { url: 'http://192.168.2.110:3000', options: {} };
+const config: SocketIoConfig = { url: 'https://henryk91-chatapp-server.glitch.me', options: {} };
 
 
 @NgModule({

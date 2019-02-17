@@ -12,7 +12,7 @@ export class DocumentService {
 
   uniqueOT = this.docId();
   username = window.localStorage.getItem('UserName');
-  documents = this.socket.fromEvent<string[]>('documents'+this.username);
+  documents = this.socket.fromEvent<string[]>('documents'+this.username+"END");
   currDocument = this.socket.fromEvent<Document>("doc-Arr");
   currDocMsg = this.socket.fromEvent<Document>("doc-Msg");
   userConfirm = this.socket.fromEvent<string>('userAuth'+this.uniqueOT);

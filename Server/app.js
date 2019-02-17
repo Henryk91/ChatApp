@@ -62,7 +62,7 @@ io.on('connection', socket => {
     });
 
     socket.on('arrDocuments', user => {
-        io.emit('documents'+user, getDocs(user));
+        io.emit('documents'+user+"END", getDocs(user));
     });
 
     console.log(`Socket ${socket.id} has connected`);

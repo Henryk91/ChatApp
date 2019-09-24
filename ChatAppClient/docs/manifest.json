@@ -4,8 +4,8 @@
   "theme_color": "#000080",
   "background_color": "#d7dff5",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/ChatAppClient/",
+  "start_url": "index.html",
   "icons": [   
     {
       "src": "assets/icons/favicon.png",

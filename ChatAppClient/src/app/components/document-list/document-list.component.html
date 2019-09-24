@@ -1,17 +1,54 @@
-<div class='container' id='nav'>
-    <div class="header">
-        <p id="loggedInParagraph" *ngIf=!loggedIn>Login or Sign up</p>
-        <input class="loginInput" #userName (keyup)="saveName()" type="text" placeholder="Username..." value="{{userame}}"><br>
-        <div id="loggedOut" *ngIf=!loggedIn>
-            <input class="loginInput" (keydown.enter)='login(userName.value, userPass.value)' #userPass type="password" placeholder="Password..."><br>
-            <button id="loginButton" (click)='login(userName.value, userPass.value)' >Login</button>
-        </div>
+<div class="container" id="nav">
+  <div class="header">
+    <button *ngIf="loggedIn" class="listBackButtonLeft" (click)="loggOut()">Out</button>
+    <button *ngIf="loggedIn" class="listBackButtonRight" (click)="reload()">Ref</button>
+    <strong>
+      <p id="receiver">{{ globals.userName }}</p>
+    </strong>
+    <div id="loggedOut" *ngIf="!loggedIn && !register">
+      <p id="loggedInParagraph">Login or Sign up</p>
+      <input class="loginInput" #email (keyup)="saveName()" type="text" placeholder="Email..." /><br />
+      <input class="loginInput" #userPass type="password" placeholder="Password..." /><br />
+      <button id="loginButton" (click)="login(email.value, userPass.value)">Login</button>
+      <br />
+      <br />
+      <button id="loginButton" (click)="registerToggle()">Sign up</button>
     </div>
-    <div id="addContact"><h3>Add New Contact</h3>
-        <input id="contactNameInput" (keydown.enter)='newDoc(contactNameInput.value, userName.value); contactNameInput.value=""' #contactNameInput type="text" placeholder="Enter Name..."><br>
-        <button id="addContButton" (click)='newDoc(contactNameInput.value, userName.value); contactNameInput.value=""' >Add</button>
+    <div id="loggedOut" *ngIf="register">
+      <p id="loggedInParagraph">Sign up to login</p>
+      <input class="loginInput" #firstName type="text" placeholder="First name..." /><br />
+      <input class="loginInput" #lastName type="text" placeholder="Last name..." /><br />
+      <input class="loginInput" #email (keyup)="saveName()" type="text" placeholder="Email..." /><br />
+      <input class="loginInput" #userPass type="password" placeholder="Password..." /><br />
+      <input class="loginInput" #userPass2 type="password" placeholder="Password2..." /><br />
+      <button id="loginButton" (click)="registerUser(firstName.value, lastName.value, email.value, userPass.value, userPass2.value)">
+        Sign up</button
+      >
+      <br />
+      <br />
+      <button id="loginButton" (click)="registerToggle()">Login</button>
     </div>
+  </div>
+  <div id="addContact"
+    ><h3>Add New Contact</h3>
+    <input
+      id="contactNameInput"
+      (keydown.enter)="newDoc(contactNameInput.value); contactNameInput.value = ''"
+      #contactNameInput
+      type="text"
+      placeholder="Enter Name..."
+    /><br />
+    <button id="addContButton" (click)="newDoc(contactNameInput.value); contactNameInput.value = ''">Add</button>
+  </div>
 
-    <span [class.selected]='docId === currArr2' (click)='loadDoc(docId, userName.value); hideNav(); this.globals.userName=userName.value' *ngFor='let docId of documents | async'>{{ docId[1] }} </span>
-    <br>
+  <span
+    class="contactList"
+    [class.selected]="docId === currArr2"
+    (click)="loadDoc(docId); hideNav()"
+    *ngFor="let docId of documents | async"
+  >
+    <p id="username">{{ docId[1] }}</p> <p *ngIf="getUnread(docId) > 0" id="unread">{{ getUnread(docId) }}</p>
+    <br />
+  </span>
+  <br />
 </div>

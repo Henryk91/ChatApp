@@ -13,3 +13,4 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(() => {
     navigator.serviceWorker.register('/ngsw-worker.js');
   }
 }).catch(err => console.log(err));
+

@@ -9,19 +9,19 @@ import { Globals } from '../globals';
   providedIn: 'root'
 })
 export class DocumentService {
-
   uniqueOT = this.docId();
   username = window.localStorage.getItem('UserName');
-  documents = this.socket.fromEvent<string[]>('documents'+this.username+"END");
-  currDocument = this.socket.fromEvent<Document>("doc-Arr");
-  currDocMsg = this.socket.fromEvent<Document>("doc-Msg");
-  userConfirm = this.socket.fromEvent<string>('userAuth'+this.uniqueOT);
+  documents = this.socket.fromEvent<string[]>('documents' + this.username + 'END');
+  currDocument = this.socket.fromEvent<Document>('doc-Arr');
+  currDocMsg = this.socket.fromEvent<Document>('doc-Msg');
+  newMsg = this.socket.fromEvent<string>('newMsg' + this.username);
+  userConfirm = this.socket.fromEvent<string>('userAuth' + this.uniqueOT);
 
-  constructor(private socket: Socket , public globals:Globals) { }
+  constructor(private socket: Socket, public globals: Globals) {}
 
   getContacts() {
-    var storage = window.localStorage;
-    var username =storage.getItem('UserName');
+    let storage = window.localStorage;
+    let username = storage.getItem('UserName');
     this.socket.emit('arrDocuments', username);
   }
 
@@ -29,15 +29,17 @@ export class DocumentService {
     this.socket.emit('getDocArr', id);
   }
 
-  newDocument(name:string, creator: string) {
-    this.socket.emit('addDoc', { id: this.docId(), users: [creator, name], doc: [{sender:'', content:'', time: '', date: ''}]});
+  newDocument(name: string, creator: string) {
+    this.socket.emit('addDoc', { id: this.docId(), users: [creator, name], doc: [{ sender: '', content: '', time: '', date: '' }] });
   }
 
-  addUser(name:string, pass:string){
-    
+  addUser(name: string, pass: string) {
     this.socket.emit('userAuth', [name, pass, this.uniqueOT]);
   }
 
+  registerUser(user) {
+    this.socket.emit('userReg', [user, this.uniqueOT]);
+  }
 
   sendMsg(msg) {
     this.socket.emit('sendMsg', msg);

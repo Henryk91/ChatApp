@@ -7,6 +7,8 @@ import { Globals } from './globals';
 import { AppComponent } from './app.component';
 import { DocumentComponent } from './components/document/document.component';
 import { DocumentListComponent } from './components/document-list/document-list.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 const config: SocketIoConfig = { url: 'https://henryk91-chatapp-server.glitch.me', options: {} };
 
 
@@ -19,7 +21,8 @@ const config: SocketIoConfig = { url: 'https://henryk91-chatapp-server.glitch.me
   imports: [
     BrowserModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true })
   ],
   providers: [Globals],
   bootstrap: [AppComponent]

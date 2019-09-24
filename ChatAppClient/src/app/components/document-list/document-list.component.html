@@ -1,7 +1,7 @@
 <div class='container' id='nav'>
     <div class="header">
         <p id="loggedInParagraph" *ngIf=!loggedIn>Login or Sign up</p>
-        <input class="loginInput" #userName (keyup)="saveName(userName.value)" type="text" placeholder="Username..." value="{{userame}}"><br>
+        <input class="loginInput" #userName (keyup)="saveName()" type="text" placeholder="Username..." value="{{userame}}"><br>
         <div id="loggedOut" *ngIf=!loggedIn>
             <input class="loginInput" (keydown.enter)='login(userName.value, userPass.value)' #userPass type="password" placeholder="Password..."><br>
             <button id="loginButton" (click)='login(userName.value, userPass.value)' >Login</button>
